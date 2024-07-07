@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Labels</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <%- include('_navbar') %>
+    <br><br><br><br>
+    <center>
+        <h1><b>LIST LABELS DETAIL BY DURATION</b></h1>
+        <br>
+    </center>
+
+    <center>
+        <table border="1" >
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Since</th>
+                <th>City</th>
+                <th>AVG</th>
+                <th>MIN</th>
+                <th>MAX</th>
+            </tr>
+            <% labelDetail.forEach((el) => { %>
+            <tr>
+                <td><%= el.id %></td>
+                <td><%= el.name %></td>
+                <td><%= el.since %></td>
+                <td><%= el.city %></td>
+                <td><%= el.averageDuration %></td>
+                <td><%= el.minDuration %></td>
+                <td><%= el.maxDuration%></td>
+            </tr>
+            <% }) %>
+        </table>
+    </center>
+</body>
+</html>

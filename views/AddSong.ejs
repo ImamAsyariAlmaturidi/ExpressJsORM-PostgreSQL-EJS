@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADD SONGS</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <%- include('_navbar') %>
+
+    <center style="margin-top: 50px;">
+        <h2>Add Song</h2>
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li style="color: red;"><%= error %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+        <br>
+        <form method="post" action="/songs/add">
+            <label>Title</label>
+            <br><br>
+            <input type="text" name="title" required>
+            <br><br>
+            <label>Band Name</label>
+            <br><br>
+            <input type="text" name="bandName" required>
+            <br><br>
+            <label>Duration</label>
+            <br><br>
+            <input type="number" name="duration" required>
+            <br><br>
+            <label>Genre</label>
+            <br><br>
+            <select name="genre" required>
+                <option value="Rock">Rock</option>
+                <option value="Pop">Pop</option>
+                <option value="Dangdut">Dangdut</option>
+                <option value="Jazz">Jazz</option>
+                <option value="Other">Other</option>
+            </select>
+            <br><br>
+            <label>Lyric</label>
+            <br><br>
+            <textarea name="lyric" rows="4" cols="50" ></textarea>
+            <br><br>
+            <label>ImageUrl</label>
+            <br><br>
+            <input type="text" name="imageUrl" required>
+            <br><br>
+            <label>Label</label>
+            <br><br>
+            <select name="LabelId" required>
+                <% formSong.forEach((el) => { %>
+                    <option value="<%= el.id %>"><%= el.LabelName %></option>
+                <% }) %>
+            </select>
+            <br><br>
+            <label>Created Date</label>
+            <br><br>
+            <input type="date" name="createdDate" required>
+            <button type="submit">Add</button>
+        </form>
+    </center>
+    
+</body>
+</html>

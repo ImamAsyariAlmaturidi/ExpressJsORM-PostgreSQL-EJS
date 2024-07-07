@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <%- include('_navbar') %>
+    <br><br><br><br>
+    <center>
+        <h1><b>List Songs</b></h1>
+        <br>
+        <% if (errors.length > 0) { %>
+            <div>
+                <% errors.forEach(error => { %>
+                    <p style="color: red;"><%= error %></p>
+                <% }) %>
+            </div>
+        <% } %>
+        <center>
+            <div style="padding: 10px;">
+                <input style="width: 50%; height: 100%;" type="text" id="search-input" placeholder="Search...">
+            <a href="#" style="color: black;" type="button" id="search-button" onclick="searchSong()">Search</a>
+            <script>
+                function searchSong() {
+                    const searchInput = document.getElementById('search-input').value;
+                    window.location.href = `/songs?title=${searchInput}`;
+                }
+            </script>
+        </div>
+    </center>   
+ <br><br>
+    </center>
+        <center><a style="color: black; border: 2px solid salmon; text-decoration: none; padding: 5px;"  href="/songs/add">ADD SONG</a></center>
+         <br><br><br><br>
+    <center>
+        <h1><b>LIST LABELS DETAIL BY DURATION</b></h1>
+        <br><br><br>
+        <table border="1" >
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Band Name</th>
+                <th>Duration</th>
+                <th>Genre</th>
+                <th>Total Vote</th>
+                <th>Action</th>
+            </tr>
+            <% song.forEach((el) => { %>
+            <tr>
+                <td><%= el.id %></td>
+                <td><%= el.title %></td>
+                <td><%= el.bandName %></td>
+                <td><%= el.duration %></td>
+                <td><%= el.genre %></td>
+                <td><%= el.totalVote %></td>
+                <td>
+                    <span>
+                        <button>
+                            <a href="/songs/<%= el.id %>">Read Song</a>
+                        </button>
+                    </span>
+                    <span>
+                        <button>
+                            <a href="/songs/<%= el.id %>/edit">Edit</a>
+                        </button>
+                    </span>
+                    <span>
+                        <button>
+                            <a href="/songs/<%= el.id %>/delete">Delete</a>
+                        </button>
+                    </span>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+    </center>
+</body>
+</html>

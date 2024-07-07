@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Details</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <%- include('_navbar') %>  
+<br><br><br>
+
+
+<% songDetail.forEach((el) => { %>
+    <h1 style="margin-left: 50px;">DATABASE</h1>
+    <div style="display: flex; margin-left: 40px;">
+            <img style="width: 200px; height: 300px;" src="<%= el.imageUrl %>" alt="<%= el.imageUrl %>">
+            <div style="margin-left: 80px;">
+                <p>Band Name: <%= el.bandName %></p>
+                <br>
+                <p>Duration: <%= el.duration %></p>
+                <br>
+                <p>Genre: <%= el.genre %></p>
+                <br>
+                <p>Label Name: <%= el.LabelName %></p>
+                <br>
+                <p>Tanggal Dirilis: <%= el.createdDate %></p>
+                <br>
+                <p>Total Vote: <%= el.totalVote %></p>
+                <br>
+                <button style="background-color: blue; padding: 5px; ; border-radius: 5px;"><a href="/songs/<%= el.id %>/vote"><p style="color: white">Add Vote</p></a></button>
+            </div>
+            <span style="white-space: pre-line; margin: auto">
+                <h1>Lyric</h1>
+             <%= el.lyric %>
+          </span> 
+        </div>
+    <% }) %>
+
+</body>
+</html>
